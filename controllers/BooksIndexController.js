@@ -2,9 +2,12 @@ angular
   .module('libraryApp')
   .controller('BooksIndexController', BooksIndexController);
 
-BooksIndexController.$inject=['$http'];
-function BooksIndexController( $http ) {
+BooksIndexController.$inject=['$http','$location'];
+function BooksIndexController( $http,$location ) {
   var vm = this;
+  vm.goHome = function() {
+      $location.path('/');
+  };
   $http({
     method: 'GET',
     url: 'https://super-crud.herokuapp.com/books'
